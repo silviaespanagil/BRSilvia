@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct BRSilviaApp: App {
+    @StateObject private var persistenceService = PersistenceService()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(persistenceService)
         }
     }
 }

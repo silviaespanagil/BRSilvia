@@ -8,6 +8,9 @@
 import Foundation
 
 class PersistenceService: ObservableObject {
+    @Published private var seenUserIds: Set<Int> = []
+    @Published private var likedUserIds: Set<Int> = []
+    
     private let userDefaults = UserDefaults.standard
     private let storyStatesKey = "story_states"
     
@@ -29,12 +32,19 @@ class PersistenceService: ObservableObject {
         state.isSeen = true
         state.lastViewedAt = Date()
         saveStoryState(state)
+        seenUserIds.insert(userId)
     }
     
     func toggleLike(userId: Int) {
         var state = getStoryState(for: userId) ?? StoryState(userId: userId)
         state.isLiked.toggle()
         saveStoryState(state)
+        
+        if state.isLiked {
+            likedUserIds.insert(userId)
+        } else {
+            likedUserIds.remove(userId)
+        }
     }
     
     func isUserSeen(_ userId: Int) -> Bool {
