@@ -16,7 +16,7 @@ extension LinearGradient {
     )
     
     static let beRealSeen = LinearGradient(
-        colors: [Color.white, Color.gray, Color.black],
+        colors: [Color.white, Color.gray],
         startPoint: .topLeading,
         endPoint: .bottomTrailing
     )
