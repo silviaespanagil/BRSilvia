@@ -126,7 +126,7 @@ struct StoryContentView: View {
             ) {
                 persistenceService.toggleLike(userId: currentStory.user.id)
             }
-
+            
         }
         .padding()
     }
