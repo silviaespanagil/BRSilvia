@@ -43,20 +43,4 @@ class StoryListViewModel: ObservableObject {
             self.isLoading = false
         }
     }
-    
-    func isStorySeen(_ story: Story) -> Bool {
-        return persistenceService?.isUserSeen(story.user.id) ?? false
-    }
-    
-    func markStoryAsSeen(_ story: Story) {
-        persistenceService?.markAsSeen(userId: story.user.id)
-    }
-    
-    func toggleLike(_ story: Story) {
-        persistenceService?.toggleLike(userId: story.user.id)
-    }
-    
-    func isStoryLiked(_ story: Story) -> Bool {
-        return persistenceService?.isUserLiked(story.user.id) ?? false
-    }
 }

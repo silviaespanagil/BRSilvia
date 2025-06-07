@@ -22,11 +22,6 @@ class PersistenceService: ObservableObject {
         return state
     }
     
-    private func loadPublishedData() {
-        seenUserIds = Set<Int>()
-        likedUserIds = Set<Int>()
-    }
-    
     func saveStoryState(_ state: StoryState) {
         guard let data = try? JSONEncoder().encode(state) else { return }
         userDefaults.set(data, forKey: "\(storyStatesKey)_\(state.userId)")
