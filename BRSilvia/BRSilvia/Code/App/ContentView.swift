@@ -14,6 +14,13 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text("Hello, world!")
+            Button("Test JSON") {
+                if let path = Bundle.main.path(forResource: "users", ofType: "json") {
+                    print("JSON found at: \(path)")
+                } else {
+                    print("JSON not found")
+                }
+            }
         }
         .padding()
     }
