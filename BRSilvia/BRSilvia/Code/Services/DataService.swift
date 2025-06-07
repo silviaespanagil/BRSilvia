@@ -34,6 +34,27 @@ class DataService: ObservableObject {
             loadingState = .failure(DataError.decodingFailed)
         }
     }
+    
+    func loadStories(page: Int, pageSize: Int = 10) -> [Story] {
+        guard !baseUsers.isEmpty else { return [] }
+        
+        var stories: [Story] = []
+        
+        for i in 0..<pageSize {
+            let globalIndex = (page * pageSize) + i
+            let userIndex = globalIndex % baseUsers.count
+            let user = baseUsers[userIndex]
+            
+            let story = Story(
+                id: "story_\(globalIndex)",
+                user: user,
+                imageUrl: "https://picsum.photos/seed/story\(globalIndex)/400/600"
+            )
+            stories.append(story)
+        }
+        
+        return stories
+    }
 }
 
 enum DataError: Error, LocalizedError {
