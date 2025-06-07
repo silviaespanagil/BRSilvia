@@ -32,7 +32,7 @@ private extension PostListCard {
                 
                 Text("\(index + 1)h ago")
                     .font(.caption)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.beRealLightGray)
             }
             Spacer()
             Button(action: {}) {
@@ -44,15 +44,7 @@ private extension PostListCard {
     }
     
     var avatarImage: some View {
-        AsyncImage(url: URL(string: "https://i.pravatar.cc/40?u=\(index + 100)")) { image in
-            image
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-        } placeholder: {
-            Circle().fill(Color.gray.opacity(0.3))
-        }
-        .frame(width: 40, height: 40)
-        .clipShape(Circle())
+        AvatarImageView(url: URL(string: "https://i.pravatar.cc/40?u=\(index + 100)"), size: 40)
     }
     
     var mainImage: some View {
@@ -79,7 +71,7 @@ private extension PostListCard {
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                 } placeholder: {
-                    Rectangle().fill(Color.gray.opacity(0.3))
+                    Rectangle().fill(Color.beRealLightGray.opacity(0.3))
                 }
                 .frame(width: 100, height: 130)
                 .clipShape(RoundedRectangle(cornerRadius: 12))

@@ -14,10 +14,6 @@ class PersistenceService: ObservableObject {
     private let userDefaults = UserDefaults.standard
     private let storyStatesKey = "story_states"
     
-    init() {
-        loadPublishedData()
-    }
-    
     func getStoryState(for userId: Int) -> StoryState? {
         guard let data = userDefaults.data(forKey: "\(storyStatesKey)_\(userId)"),
               let state = try? JSONDecoder().decode(StoryState.self, from: data) else {
